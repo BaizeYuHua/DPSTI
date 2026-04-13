@@ -11,477 +11,146 @@
             --accent: #00b4ff;
             --gold: #ffc600;
             --text: #bdc5cd;
-            --hit-bg: #2d3436;
+            --red: #ff4d4d;
         }
-
-        body {
-            background: var(--bg);
-            color: #ffffff;
-            font-family: 'Inter', 'PingFang SC', sans-serif;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            min-height: 100vh;
-        }
-
+        body { background: var(--bg); color: #fff; font-family: 'Inter', sans-serif; margin: 0; display: flex; justify-content: center; min-height: 100vh; }
         #app { width: 100%; max-width: 650px; padding: 20px; box-sizing: border-box; }
-
-        .progress-container {
-            width: 100%;
-            height: 4px;
-            background: #2a323a;
-            margin: 15px 0;
-            position: relative;
-        }
-        #progress-bar {
-            height: 100%;
-            width: 0%;
-            background: var(--accent);
-            box-shadow: 0 0 10px var(--accent);
-            transition: width 0.3s;
-        }
-
-        .container {
-            background: var(--panel);
-            padding: 25px;
-            border: 1px solid #333;
-            position: relative;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-
-        .container::after {
-            content: "PRTS AUDIT CORE v2.1";
-            position: absolute;
-            bottom: 5px;
-            right: 10px;
-            font-size: 9px;
-            color: #444;
-        }
-
-        h1 { font-size: 1.2rem; border-left: 4px solid var(--accent); padding-left: 15px; margin: 0 0 20px 0; color: #fff; }
-        .q-info { color: var(--accent); font-size: 0.8rem; margin-bottom: 5px; font-family: monospace; }
-        .q-text { font-size: 1.1rem; margin-bottom: 30px; line-height: 1.6; min-height: 60px; }
-
-        .opt-btn {
-            display: block;
-            width: 100%;
-            padding: 15px 20px;
-            margin-bottom: 12px;
-            background: #252c33;
-            border: 1px solid #3d4650;
-            color: var(--text);
-            text-align: left;
-            cursor: pointer;
-            transition: all 0.2s;
-            font-size: 0.95rem;
-        }
-        .opt-btn:hover {
-            background: #313b45;
-            border-color: var(--accent);
-            color: #fff;
-            transform: translateX(5px);
-        }
-
-        .link-text {
-            display: inline-block;
-            margin-top: 15px;
-            color: var(--accent);
-            text-decoration: underline;
-            cursor: pointer;
-            font-size: 0.85rem;
-        }
-
-        .hit-counter {
-            font-family: monospace;
-            background: #000;
-            color: var(--gold);
-            padding: 5px 15px;
-            display: inline-block;
-            border: 1px solid var(--gold);
-            margin-bottom: 10px;
-            font-weight: bold;
-            letter-spacing: 1px;
-        }
-
-        .hidden { display: none; }
-
-        /* 结果页 */
-        .res-card { text-align: center; }
-        .cup-title { font-size: 3.5rem; color: var(--gold); margin: 5px 0 15px 0; font-weight: 800; text-shadow: 0 0 20px rgba(255,198,0,0.3); }
-        
-        .hit-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 8px;
-            margin-top: 20px;
-        }
-        .hit-item {
-            font-size: 0.75rem;
-            padding: 8px;
-            background: #12161b;
-            border: 1px solid #2a323a;
-            color: #555; /* 默认未命中颜色 */
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .hit-item.active {
-            color: #fff;
-            border-color: var(--accent);
-            background: rgba(0, 180, 255, 0.1);
-        }
-
-        .attr-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; text-align: left; margin-top: 25px; }
-        .attr-item { background: #12161b; padding: 12px; border: 1px solid #2a323a; border-radius: 4px; }
-        
-        .tag { font-size: 0.65rem; padding: 1px 4px; border-radius: 2px; text-transform: uppercase; font-weight: bold; }
+        .container { background: var(--panel); padding: 25px; border: 1px solid #333; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .progress-container { width: 100%; height: 4px; background: #2a323a; margin: 15px 0; }
+        #progress-bar { height: 100%; width: 0%; background: var(--accent); transition: width 0.3s; }
+        h1 { font-size: 1.2rem; border-left: 4px solid var(--accent); padding-left: 15px; margin-bottom: 20px; }
+        .q-text { font-size: 1.1rem; margin-bottom: 25px; line-height: 1.6; min-height: 50px; }
+        .opt-btn { display: block; width: 100%; padding: 14px 20px; margin-bottom: 10px; background: #252c33; border: 1px solid #3d4650; color: var(--text); text-align: left; cursor: pointer; transition: 0.2s; }
+        .opt-btn:hover { background: #313b45; border-color: var(--accent); color: #fff; }
+        .nav-btns { display: flex; gap: 10px; margin-top: 20px; }
+        .back-btn { background: #2a323a; color: #888; border: 1px solid #444; padding: 10px 20px; cursor: pointer; flex: 1; }
+        .hit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 20px 0; }
+        .hit-item { font-size: 0.75rem; padding: 8px; background: #12161b; border: 1px solid #2a323a; display: flex; justify-content: space-between; align-items: center; }
+        .tag { font-size: 0.65rem; padding: 2px 5px; border-radius: 2px; font-weight: bold; }
         .tag-super { background: var(--gold); color: #000; }
         .tag-big { background: var(--accent); color: #fff; }
         .tag-mid { background: #444; color: #ccc; }
-        .tag-inactive { background: #222; color: #444; border: 1px solid #333; }
-
-        .archive-section { margin-top: 20px; text-align: left; }
-        .archive-title { color: var(--gold); border-bottom: 1px solid #444; padding-bottom: 5px; margin-bottom: 10px; font-size: 1rem; }
+        .tag-small { background: #2c3e50; color: #95a5a6; }
+        .tag-xsmall { background: #1a1a1a; color: #555; border: 1px solid #333; }
+        .cup-title { font-size: 3.5rem; color: var(--gold); margin: 10px 0; font-weight: 800; text-align: center; }
+        .desc-text { font-size: 0.9rem; line-height: 1.8; color: var(--text); background: rgba(0,0,0,0.2); padding: 15px; margin: 20px 0; border-radius: 4px; text-align: left; }
+        .disclaimer { font-size: 0.7rem; color: #555; text-align: center; margin-top: 20px; }
+        .hidden { display: none; }
     </style>
 </head>
 <body>
-
 <div id="app">
     <div id="start-screen" class="container">
         <h1>DPSTI 强度人格审计</h1>
-        <p style="color:var(--text); line-height:1.6; font-size:0.9rem;">
-            博士，准备好接受 PRTS 对你的人格杯级评估了吗？<br><br>
-            本系统通过 30 个作战模拟场景分析你的性格坐标：<br>
-            <b>[P] 爆发/回转</b> | <b>[C] 部署费用</b> | <b>[A] 攻击范围</b> | <b>[M] 底层机制</b>
-        </p>
-        <button class="opt-btn" onclick="showView('quiz-screen'); renderQuestion();" style="text-align:center; border-color:var(--accent); margin-top:20px;">[ 接入神经链接 ]</button>
-        <div class="link-text" onclick="showView('archive-screen')">直接查看所有属性分级标准 >></div>
+        <p style="color:var(--text); line-height:1.6; font-size:0.9rem;">检测到博士登录。PRTS 将扫描 30 个作战决策逻辑，审计你的<b>爆发、费用、范围、机制</b>四大性能指标。<br><br>警告：结果可能过于硬核，请做好心理准备。</p>
+        <button class="opt-btn" onclick="resetTest(); showView('quiz-screen'); renderQuestion();" style="text-align:center; border-color:var(--accent);">[ 开始强度评估 ]</button>
+        <div onclick="showView('archive-screen')" style="color:var(--accent); text-align:center; margin-top:15px; cursor:pointer; font-size:0.8rem;">查看全性格属性分级标准 >></div>
     </div>
 
     <div id="quiz-screen" class="hidden">
-        <div class="q-info" id="q-idx">ANALYSIS // 01</div>
+        <div style="color:var(--accent); font-size:0.8rem; margin-bottom:5px;" id="q-idx">ANALYSIS // 01</div>
         <div class="progress-container"><div id="progress-bar"></div></div>
         <div class="container">
-            <div class="q-text" id="q-text">数据载入中...</div>
+            <div class="q-text" id="q-text">正在同步作战记录...</div>
             <div id="opts"></div>
+            <div class="nav-btns"><button class="back-btn" id="prev-btn" onclick="prevQuestion()">返回上一题</button></div>
         </div>
     </div>
 
-    <div id="res-screen" class="hidden container res-card">
-        <p style="font-size:0.8rem; opacity:0.6; margin-bottom:5px;">审计报告生成完毕</p>
-        <div class="hit-counter" id="hit-stat">命中 0 / 10 维</div>
+    <div id="res-screen" class="hidden container" style="text-align:center;">
+        <p style="font-size:0.8rem; opacity:0.6;">审计报告已生成</p>
+        <div id="hit-stat" style="color:var(--gold); font-weight:bold; font-family:monospace;">命中 0 / 10 维</div>
         <div class="cup-title" id="final-cup">大杯</div>
-        
         <div id="hit-grid-container" class="hit-grid"></div>
-        
-        <div class="attr-grid" id="attrs"></div>
-        
-        <div style="margin-top:25px;">
-            <div class="link-text" onclick="showView('archive-screen')">点击查询全性格属性分级标准 >></div>
-        </div>
-        
-        <button class="opt-btn" onclick="location.reload()" style="text-align:center; margin-top:30px;">[ 重新初始化 ]</button>
+        <div class="desc-text" id="personality-desc">审计中...</div>
+        <button class="opt-btn" onclick="location.reload()" style="text-align:center;">[ 重新初始化 ]</button>
+        <div class="disclaimer">免责声明：此测试基于 MBTI 和 SBTI 逻辑，结果仅供娱乐参考。</div>
     </div>
 
     <div id="archive-screen" class="hidden container">
         <h1>性格维度档案库</h1>
-        <div class="archive-section">
-            <h3 class="archive-title">10 大硬核评价指标</h3>
-            <p style="font-size:0.8rem; color:var(--text)"><b>决战输出:</b> 高爆发人格，擅长解决极端难题。</p>
-            <p style="font-size:0.8rem; color:var(--text)"><b>基石防御:</b> 极高稳定性，生活节奏从不乱轴。</p>
-            <p style="font-size:0.8rem; color:var(--text)"><b>低费模板:</b> 零资源消耗，不给人添麻烦的泛用神。</p>
-            <p style="font-size:0.8rem; color:var(--text)"><b>精英部署:</b> 高冷高耗，但出手必是质变。</p>
-            <p style="font-size:0.8rem; color:var(--text)"><b>广域影响:</b> 社交半径覆盖全图，自带光环。</p>
-            <p style="font-size:0.8rem; color:var(--text)"><b>单格阻挡:</b> 极致社恐或极致专注，守好自己的一路。</p>
-            <p style="font-size:0.8rem; color:var(--text)"><b>数值碾压:</b> 硬实力强，不屑于玩虚的。</p>
-            <p style="font-size:0.8rem; color:var(--text)"><b>机制解法:</b> 聪明才智，擅长四两拨千斤。</p>
-            <p style="font-size:0.8rem; color:var(--text)"><b>落地即战:</b> 反应极快，没有任何启动前摇。</p>
-            <p style="font-size:0.8rem; color:var(--text)"><b>独立天赋:</b> 保值率极高，不吃任何外界辅助。</p>
-        </div>
+        <div id="archive-list" style="font-size:0.85rem; line-height:1.6; color:var(--text)"></div>
         <button class="opt-btn" onclick="showView('start-screen')" style="text-align:center; margin-top:20px;">[ 返回主界面 ]</button>
     </div>
 </div>
 
 <script>
-    // 题目库 (30题)
     const questions = [
-        { q: "面对高难关卡的首个精英怪，你的操作习惯是？", o: [
-            {t: "攒费下决战兵器，一套爆发带走", s: {P:2, C:1}},
-            {t: "先下先锋和挡枪，慢慢消耗", s: {P:-1, C:-1}},
-            {t: "用特种干员反复推拉，机制戏耍", s: {M:-2}},
-            {t: "直接漏掉，保住大本营再说", s: {M:-1}}
-        ]},
-        { q: "如果你在罗德岛负责一个项目，你最希望？", o: [
-            {t: "拥有无限预算，打出力大砖飞的效果", s: {C:2, M:2}},
-            {t: "即使资源匮乏也能靠操作极限通关", s: {C:-2, M:-1}},
-            {t: "全图支援，每个部门都有我的身影", s: {A:2}},
-            {t: "深耕核心技术，不求泛用但求唯一", s: {A:-2}}
-        ]},
-        { q: "朋友遇到困难向你求助，你的“部署”反应是？", o: [
-            {t: "“哪怕我在眩晕期，也会瞬间起身解决”", s: {P:2}},
-            {t: "“我会一直陪着你，直到问题自动消失”", s: {P:-2}},
-            {t: "“你需要支付一定的情绪价值作为费用”", s: {C:2}},
-            {t: "“这种事只要按这个流程走就行”", s: {M:1}}
-        ]},
-        { q: "你最喜欢的干员技能形态是？", o: [
-            {t: "落地点火，即插即用，撤退回费", s: {P:2, C:-1}},
-            {t: "常驻开启，永续Buff，解放双手", s: {P:-2, M:1}},
-            {t: "超广域覆盖，全图真银斩/火山", s: {A:2}},
-            {t: "吟唱半天，但一发入魂破坏平衡", s: {P:2, C:2}}
-        ]},
-        { q: "在公司/学校聚餐时，你的“攻击范围”是？", o: [
-            {t: "全场焦点，和谁都能聊两句", s: {A:2}},
-            {t: "只和左右两格的朋友说话", s: {A:-1}},
-            {t: "低头吃菜，防御力极高，拒绝交流", s: {A:-2, C:-1}},
-            {t: "负责组织并点菜的统筹者", s: {M:2}}
-        ]},
-        { q: "关于“下毒（性格缺陷）”，你更倾向于哪种？", o: [
-            {t: "回转极慢：累一次要歇半个月", s: {P:-2}},
-            {t: "部署费极高：自尊心强，很难请动", s: {C:2}},
-            {t: "攻击范围窄：只在专业领域有作用", s: {A:-2}},
-            {t: "纯纯白板：没有任何特殊机制的凡人", s: {M:-2}}
-        ]},
-        { q: "面对不公平的规则，你的战斗风格是？", o: [
-            {t: "暴力拆迁，用硬实力让规则失效", s: {M:2}},
-            {t: "寻找Bug，利用规则本身的漏洞", s: {M:-2}},
-            {t: "联合大家，通过群体Buff改变环境", s: {A:2}},
-            {t: "忍气吞声，积累SP等待翻盘", s: {P:-1}}
-        ]},
-        { q: "你的学习状态最接近？", o: [
-            {t: "考前三天开启“过载模式”", s: {P:2}},
-            {t: "每天坚持复习，基石型选手", s: {P:-2}},
-            {t: "需要各种补给（奶）和奖励才能学", s: {C:2}},
-            {t: "自创一套逻辑体系，自成一派", s: {M:-2}}
-        ]},
-        { q: "如果你被重置为 1 级，你觉得自己？", o: [
-            {t: "完全没法用，我全靠后期练度", s: {C:2}},
-            {t: "依然是优秀的工具人，性价比极高", s: {C:-2}},
-            {t: "我会立刻寻找新的职业分支", s: {M:-1}},
-            {t: "只要底子在，在哪都是超大杯", s: {M:2}}
-        ]},
-        { q: "你的情绪回转周期通常是？", o: [
-            {t: "很快，忘掉不快只需一顿火锅", s: {P:1}},
-            {t: "很慢，一个心结能记三年", s: {P:-2}},
-            {t: "看心情，我的随机性很强", s: {M:-1}},
-            {t: "我根本没有情绪波动", s: {M:2}}
-        ]},
-        { q: "面对陌生的城市，你的探索方式？", o: [
-            {t: "暴力跑图，一天走三万步", s: {P:1, M:1}},
-            {t: "精研攻略，走最省力的路线", s: {M:-1, C:-1}},
-            {t: "走到哪算哪，随遇而安", s: {A:1}},
-            {t: "必须住最好的酒店才出门", s: {C:2}}
-        ]},
-        { q: "你的工作台/桌面整洁度？", o: [
-            {t: "一尘不染，像强迫症现场", s: {M:2}},
-            {t: "乱中有序，我知道每样东西在哪", s: {M:-1}},
-            {t: "极其混乱，部署费用极高", s: {C:2}},
-            {t: "根本没有固定的办公位", s: {A:2}}
-        ]},
-        { q: "对于“基石（稳定生活）”的看法？", o: [
-            {t: "人生就需要稳定和挂机", s: {P:-2}},
-            {t: "无聊，我追求刺激的波峰", s: {P:2}},
-            {t: "基石也需要偶尔的爆发点缀", s: {P:1}},
-            {t: "我只在乎基石稳不稳固", s: {M:1}}
-        ]},
-        { q: "你会为了一个虚荣的目标透支自己吗？", o: [
-            {t: "会，为了那一刻的超大杯评价", s: {P:2, C:2}},
-            {t: "不会，性价比太低", s: {C:-2}},
-            {t: "看这件事的影响范围够不够大", s: {A:1}},
-            {t: "不屑一顾", s: {M:1}}
-        ]},
-        { q: "你的社交回应通常是？", o: [
-            {t: "长篇大论，生怕说不清楚", s: {A:2, M:1}},
-            {t: "恩，哦，呵呵", s: {A:-2, C:-1}},
-            {t: "只发表情包，机制怪", s: {M:-2}},
-            {t: "偶尔诈尸，平时失踪", s: {P:2}}
-        ]},
-        { q: "你更看重哪种成就感？", o: [
-            {t: "力压群雄的爽感", s: {M:2}},
-            {t: "四两拨千斤的快感", s: {M:-2}},
-            {t: "帮助别人的满足感", s: {A:1, C:-1}},
-            {t: "单纯完成任务的解脱感", s: {P:-1}}
-        ]},
-        { q: "你如何看待“被替代”？", o: [
-            {t: "我永远有自己的核心价值", s: {M:2}},
-            {t: "被替代正好，我可以下班了", s: {C:-1}},
-            {t: "我会立刻转职到新赛道", s: {M:-1}},
-            {t: "这让我感到巨大的危机", s: {P:1}}
-        ]},
-        { q: "面对复杂的人际，你的技能是？", o: [
-            {t: "真理只在射程之内", s: {M:2}},
-            {t: "多听多看少说话", s: {A:-1, C:-1}},
-            {t: "长袖善舞，左右逢源", s: {A:2}},
-            {t: "我是那个被拉黑的特种", s: {M:-2}}
-        ]},
-        { q: "你是一个“吃拐（依赖他人）”的人吗？", o: [
-            {t: "是的，没人帮我我什么都不行", s: {C:2}},
-            {t: "偶尔需要配合", s: {C:1}},
-            {t: "我就是那个给别人提供拐的人", s: {A:1, M:-1}},
-            {t: "绝食型选手，单通一切", s: {C:-2, M:2}}
-        ]},
-        { q: "你的生活节奏最像？", o: [
-            {t: "高速公路上奔驰的赛车", s: {P:2}},
-            {t: "公园里悠闲的慢跑者", s: {P:-1}},
-            {t: "走走停停的旅行者", s: {P:0}},
-            {t: "根本没在动的雕像", s: {P:-2}}
-        ]},
-        { q: "当你在一个新环境，你会先观察？", o: [
-            {t: "谁是这里的老大（数值）", s: {M:1}},
-            {t: "这里的规矩和漏洞（机制）", s: {M:-2}},
-            {t: "出口在哪（生存费用）", s: {C:-1}},
-            {t: "有多少潜在的朋友（范围）", s: {A:2}}
-        ]},
-        { q: "对于“完美”，你的执念是？", o: [
-            {t: "每一个像素都要对齐", s: {M:2}},
-            {t: "差不多行了，够用就是大杯", s: {M:-1}},
-            {t: "完美太贵，我买不起", s: {C:-1}},
-            {t: "我的存在就是完美", s: {M:1}}
-        ]},
-        { q: "你更喜欢哪种工作方式？", o: [
-            {t: "独立办公室（单格）", s: {A:-2}},
-            {t: "开放式办公区（广域）", s: {A:2}},
-            {t: "咖啡馆（低费高压）", s: {C:1}},
-            {t: "家里蹲（零费挂机）", s: {C:-2}}
-        ]},
-        { q: "面对批评，你的反应速度？", o: [
-            {t: "瞬间反弹，极速反击", s: {P:2}},
-            {t: "记录在小本本上，等待时机", s: {P:-1}},
-            {t: "虚心接受，坚决不改", s: {M:-2}},
-            {t: "反思自己，重塑自我", s: {M:1}}
-        ]},
-        { q: "你觉得自己的潜能还有多少？", o: [
-            {t: "我是还没精二的蓝调，等我翻身", s: {M:-2, P:1}},
-            {t: "我已经到上限了，这就是我的全部", s: {M:1}},
-            {t: "我的潜能取决于你给我多少费", s: {C:2}},
-            {t: "无限可能", s: {M:2}}
-        ]},
-        { q: "你喜欢通过什么方式证明自己？", o: [
-            {t: "晒出我的工资单和头衔", s: {M:2}},
-            {t: "晒出我解决过的高难问题", s: {M:-2}},
-            {t: "晒出我庞大的社交圈", s: {A:2}},
-            {t: "不需要向任何人证明", s: {C:-2}}
-        ]},
-        { q: "你认为什么是“强”？", o: [
-            {t: "无可替代的唯一性", s: {M:2}},
-            {t: "极高的容错率", s: {C:-1}},
-            {t: "在任何地方都能发光", s: {A:2}},
-            {t: "瞬间改变局势的能力", s: {P:2}}
-        ]},
-        { q: "如果明天你要去战场，你选？", o: [
-            {t: "重装：顶在前面保护大家", s: {M:1, A:1}},
-            {t: "近卫：去把那个 Boss 砍了", s: {P:2, M:1}},
-            {t: "医疗：我会守住你们的命", s: {C:-1, A:1}},
-            {t: "特种：我去把他们推下悬崖", s: {M:-2}}
-        ]},
-        { q: "你对自己现在的“杯级”评价是？", o: [
-            {t: "目前是小杯，但我会进化的", s: {P:1}},
-            {t: "稳稳的中杯，挺好的", s: {M:0}},
-            {t: "必须是大杯，甚至超大杯", s: {M:1}},
-            {t: "我是隐藏的六星级咸鱼", s: {C:-2}}
-        ]},
-        { q: "最后，你对 PRTS 的审计态度是？", o: [
-            {t: "非常有意思，再来一次", s: {P:1}},
-            {t: "不过如此，数据一般", s: {M:1}},
-            {t: "我只想要个好结果", s: {C:1}},
-            {t: "这就结束了？（部署撤退）", s: {C:-1}}
-        ]}
+        { q: "高难关卡首个精英怪出现，你的操作是？", o: [{t:"决战技爆发带走",s:{P:2,C:1}},{t:"低费挡枪磨血",s:{P:-1,C:-1}},{t:"特种推拉玩机制",s:{M:-2}},{t:"漏掉保蓝点",s:{M:-1}}]},
+        { q: "项目研发时，你最希望？", o: [{t:"无限资源暴力破解",s:{C:2,M:2}},{t:"极限压人低配通关",s:{C:-2,M:-1}},{t:"全图支援到处都有我",s:{A:2}},{t:"深耕单点技术",s:{A:-2}}]},
+        { q: "朋友求助时，你的态度？", o: [{t:"瞬间起身去解决",s:{P:2}},{t:"陪着直到解决",s:{P:-2}},{t:"需要补偿（费）",s:{C:2}},{t:"流程化指导",s:{M:1}}]},
+        { q: "喜欢的技能形态？", o: [{t:"落地点火插拔",s:{P:2,C:-1}},{t:"永续常驻挂机",s:{P:-2,M:1}},{t:"全图超大范围",s:{A:2}},{t:"吟唱后毁灭性输出",s:{P:2,C:2}}]},
+        { q: "社交聚餐时你是？", o: [{t:"全场焦点社交达人",s:{A:2}},{t:"只聊身边两个",s:{A:-1}},{t:"低头猛吃拒沟通",s:{A:-2,C:-1}},{t:"点菜统筹负责人",s:{M:2}}]},
+        { q: "面对下毒（缺陷）？", o: [{t:"回转极慢",s:{P:-2}},{t:"费极高",s:{C:2}},{t:"范围窄",s:{A:-2}},{t:"白板无机制",s:{M:-2}}]},
+        { q: "面对不公规则？", o: [{t:"暴力拆迁不解释",s:{M:2}},{t:"钻Bug找漏洞",s:{M:-2}},{t:"群体Buff改变环境",s:{A:2}},{t:"积累SP等翻盘",s:{P:-1}}]},
+        { q: "学习状态接近？", o: [{t:"考前过载模式",s:{P:2}},{t:"每天一点基石型",s:{P:-2}},{t:"需奖励（奶）才学",s:{C:2}},{t:"自创逻辑体系",s:{M:-2}}]},
+        { q: "被降到1级时你？", o: [{t:"完全没用靠练度",s:{C:2}},{t:"优秀工具人",s:{C:-2}},{t:"寻找新赛道",s:{M:-1}},{t:"底子好在哪都行",s:{M:2}}]},
+        { q: "情绪回转周期？", o: [{t:"极快，一顿饭就好",s:{P:1}},{t:"极慢，记仇三年",s:{P:-2}},{t:"随机性极强",s:{M:-1}},{t:"无波动纯机械",s:{M:2}}]},
+        { q: "探索城市的方式？", o: [{t:"暴力跑图走三万步",s:{P:1,M:1}},{t:"精研攻略走捷径",s:{M:-1,C:-1}},{t:"随心所欲乱逛",s:{A:1}},{t:"必须住五星级",s:{C:2}}]},
+        { q: "桌面整洁度？", o: [{t:"强迫症级别整齐",s:{M:2}},{t:"乱中有序",s:{M:-1}},{t:"乱成废墟（高费）",s:{C:2}},{t:"无固定位",s:{A:2}}]},
+        { q: "对基石稳健看法？", o: [{t:"向往安稳挂机",s:{P:-2}},{t:"追求刺激波峰",s:{P:2}},{t:"基石需点缀爆发",s:{P:1}},{t:"只在乎是否耐打",s:{M:1}}]},
+        { q: "为虚荣透支自己？", o: [{t:"会，为那刻的高光",s:{P:2,C:2}},{t:"不会，性价比低",s:{C:-2}},{t:"看影响力够不够",s:{A:1}},{t:"不屑一顾",s:{M:1}}]},
+        { q: "社交回信习惯？", o: [{t:"长篇大论怕漏说",s:{A:2}},{t:"单字敷衍",s:{A:-2}},{t:"只发表情包",s:{M:-2}},{t:"偶尔诈尸",s:{P:2}}]},
+        { q: "哪种成就感更高？", o: [{t:"力压群雄",s:{M:2}},{t:"四两拨千斤",s:{M:-2}},{t:"助人满足感",s:{A:1}},{t:"单纯交差",s:{P:-1}}]},
+        { q: "如何看待被替代？", o: [{t:"我有核心竞争力",s:{M:2}},{t:"正好退休",s:{C:-1}},{t:"转职新分支",s:{M:-1}},{t:"巨大危机感",s:{P:1}}]},
+        { q: "复杂人际中你是？", o: [{t:"真理在射程内",s:{M:2}},{t:"少说话多观察",s:{A:-1}},{t:"长袖善舞",s:{A:2}},{t:"被黑的特种",s:{M:-2}}]},
+        { q: "你吃拐（靠人帮）吗？", o: [{t:"没人帮我不行",s:{C:2}},{t:"偶尔需配合",s:{C:1}},{t:"我帮别人（拐）",s:{A:1,M:-1}},{t:"绝食选手全单通",s:{C:-2,M:2}}]},
+        { q: "生活节奏像？", o: [{t:"赛车高速奔驰",s:{P:2}},{t:"公园漫步者",s:{P:-1}},{t:"旅行者走停停",s:{P:0}},{t:"静止的雕像",s:{P:-2}}]},
+        { q: "到新环境先看？", o: [{t:"谁是老大",s:{M:1}},{t:"规矩与漏洞",s:{M:-2}},{t:"哪里好摸鱼",s:{C:-1}},{t:"潜在朋友圈",s:{A:2}}]},
+        { q: "对完美的执念？", o: [{t:"极致对齐",s:{M:2}},{t:"够用就行",s:{M:-1}},{t:"完美太贵不要",s:{C:-1}},{t:"我就是完美",s:{M:1}}]},
+        { q: "工作位偏好？", o: [{t:"独立单格",s:{A:-2}},{t:"开放广域",s:{A:2}},{t:"咖啡馆",s:{C:1}},{t:"家里蹲",s:{C:-2}}]},
+        { q: "面对批评反应？", o: [{t:"极速回击",s:{P:2}},{t:"记小本子等时机",s:{P:-1}},{t:"虚心不改",s:{M:-2}},{t:"深刻反思",s:{M:1}}]},
+        { q: "你还有多少潜能？", o: [{t:"未精二等质变",s:{M:-2}},{t:"已满配无潜能",s:{M:1}},{t:"看你给多少费",s:{C:2}},{t:"无限扩展",s:{M:2}}]},
+        { q: "如何证明自己？", o: [{t:"晒工资头衔",s:{M:2}},{t:"晒解决的问题",s:{M:-2}},{t:"晒人脉圈",s:{A:2}},{t:"不屑证明",s:{C:-2}}]},
+        { q: "对“强”的定义？", o: [{t:"无可替代性",s:{M:2}},{t:"高容错率",s:{C:-1}},{t:"处处发光",s:{A:2}},{t:"瞬间改变局势",s:{P:2}}]},
+        { q: "战场选哪个职能？", o: [{t:"近卫冲锋",s:{P:2,M:1}},{t:"重装保护",s:{M:1,A:1}},{t:"医疗补给",s:{C:-1,A:1}},{t:"特种玩杂技",s:{M:-2}}]},
+        { q: "目前的杯级自我评价？", o: [{t:"小杯进阶中",s:{P:1}},{t:"稳健中杯",s:{M:0}},{t:"必须超大杯",s:{M:1}},{t:"隐藏六星咸鱼",s:{C:-2}}]},
+        { q: "对审计的态度？", o: [{t:"有趣再来",s:{P:1}},{t:"数据一般",s:{M:1}},{t:"只要好结果",s:{C:1}},{t:"这就完了？",s:{C:-1}}]}
     ];
 
-    let current = 0;
-    let scores = {P:0, C:0, A:0, M:0};
+    let current = 0, history = [], scores = {P:0, C:0, A:0, M:0};
 
-    function showView(viewId) {
-        ['start-screen', 'quiz-screen', 'res-screen', 'archive-screen'].forEach(id => {
-            document.getElementById(id).classList.add('hidden');
-        });
-        document.getElementById(viewId).classList.remove('hidden');
+    function showView(v){ document.querySelectorAll('.hidden, #start-screen, #quiz-screen, #res-screen, #archive-screen').forEach(e=>e.classList.add('hidden')); document.getElementById(v).classList.remove('hidden'); }
+    function resetTest(){ current = 0; history = []; scores = {P:0, C:0, A:0, M:0}; }
+    function renderQuestion(){
+        let q = questions[current]; document.getElementById('q-idx').innerText = "ANALYSIS // "+(current+1); document.getElementById('progress-bar').style.width = (current/30*100)+"%"; document.getElementById('q-text').innerText = q.q;
+        const optBox = document.getElementById('opts'); optBox.innerHTML = '';
+        q.o.forEach(o => { let b = document.createElement('button'); b.className = 'opt-btn'; b.innerText = o.t; b.onclick = () => { history.push(JSON.parse(JSON.stringify(scores))); for(let k in o.s) scores[k]+=o.s[k]; current++; if(current<30) renderQuestion(); else showResult(); }; optBox.appendChild(b); });
+        document.getElementById('prev-btn').style.visibility = current > 0 ? 'visible' : 'hidden';
     }
+    function prevQuestion(){ if(current>0){ current--; scores = history.pop(); renderQuestion(); } }
 
-    function renderQuestion() {
-        const q = questions[current];
-        document.getElementById('q-idx').innerText = "ANALYSIS // " + String(current+1).padStart(2, '0');
-        document.getElementById('progress-bar').style.width = (current / 30 * 100) + "%";
-        document.getElementById('q-text').innerText = q.q;
-        
-        const optContainer = document.getElementById('opts');
-        optContainer.innerHTML = '';
-        
-        q.o.forEach(opt => {
-            const btn = document.createElement('button');
-            btn.className = 'opt-btn';
-            btn.innerText = opt.t;
-            btn.onclick = () => {
-                for(let k in opt.s) scores[k] += opt.s[k];
-                current++;
-                if(current < 30) renderQuestion();
-                else calculateAndShowResult();
-            };
-            optContainer.appendChild(btn);
-        });
-    }
+    const auditNodes = [
+        { name: "决战输出", check: (s) => s.P > 7, pos: "超大杯", neg: "超小杯" },
+        { name: "基石防御", check: (s) => s.P < -7, pos: "大杯", neg: "小杯" },
+        { name: "低费模板", check: (s) => s.C < -7, pos: "超大杯", neg: "超小杯" },
+        { name: "精英部署", check: (s) => s.C > 7, pos: "大杯", neg: "小杯" },
+        { name: "全图打击", check: (s) => s.A > 7, pos: "超大杯", neg: "超小杯" },
+        { name: "单格阻挡", check: (s) => s.A < -7, pos: "中杯", neg: "小杯" },
+        { name: "数值碾压", check: (s) => s.M > 7, pos: "超大杯", neg: "超小杯" },
+        { name: "机制逃票", check: (s) => s.M < -7, pos: "大杯", neg: "小杯" },
+        { name: "落地即战", check: (s) => s.P > 4 && s.C < 0, pos: "大杯", neg: "超小杯" },
+        { name: "独立天赋", check: (s) => s.C < -4 && s.M > 4, pos: "超大杯", neg: "中杯" }
+    ];
 
-    function calculateAndShowResult() {
-        showView('res-screen');
-        
-        // 10 维审计指标定义
-        const auditNodes = [
-            { name: "决战输出", check: () => scores.P > 7, cup: "超大杯" },
-            { name: "基石防御", check: () => scores.P < -7, cup: "大杯" },
-            { name: "低费模板", check: () => scores.C < -7, cup: "超大杯" },
-            { name: "精英部署", check: () => scores.C > 7, cup: "大杯" },
-            { name: "全图打击", check: () => scores.A > 7, cup: "超大杯" },
-            { name: "单格阻挡", check: () => scores.A < -7, cup: "中杯" },
-            { name: "数值碾压", check: () => scores.M > 7, cup: "超大杯" },
-            { name: "机制解法", check: () => scores.M < -7, cup: "大杯" },
-            { name: "落地即战", check: () => scores.P > 4 && scores.C < 0, cup: "大杯" },
-            { name: "独立天赋", check: () => scores.C < -4 && scores.M > 4, cup: "超大杯" }
-        ];
-
-        let activeHits = auditNodes.filter(n => n.check());
-        document.getElementById('hit-stat').innerText = `命中 ${activeHits.length} / 10 维`;
-
-        // 渲染 10 维矩阵
-        const grid = document.getElementById('hit-grid-container');
-        grid.innerHTML = auditNodes.map(n => {
-            const isActive = n.check();
-            const tagClass = isActive ? (n.cup === '超大杯' ? 'tag-super' : 'tag-big') : 'tag-inactive';
-            return `
-                <div class="hit-item ${isActive ? 'active' : ''}">
-                    <span>${n.name}</span>
-                    <span class="tag ${tagClass}">${isActive ? n.cup : '未命中'}</span>
-                </div>
-            `;
+    function showResult(){
+        showView('res-screen'); let hits = auditNodes.filter(n => n.check(scores)).length;
+        document.getElementById('hit-stat').innerText = `命中 ${hits} / 10 维`;
+        document.getElementById('final-cup').innerText = ["超小杯", "小杯", "中杯", "大杯", "超大杯"][Math.min(Math.floor(hits/2), 4)];
+        document.getElementById('hit-grid-container').innerHTML = auditNodes.map(n => {
+            const ok = n.check(scores); const cup = ok ? n.pos : n.neg;
+            const tagClass = cup.includes("超大") ? 'tag-super' : cup.includes("大") ? 'tag-big' : cup.includes("中") ? 'tag-mid' : cup.includes("超小") ? 'tag-xsmall' : 'tag-small';
+            return `<div class="hit-item"><span>${n.name}</span><span class="tag ${tagClass}">${cup}</span></div>`;
         }).join('');
-
-        // 最终综合杯级
-        let finalCupIdx = Math.min(Math.floor(activeHits.length / 1.5), 4);
-        if(activeHits.length >= 6) finalCupIdx = 4;
-        const cups = ["超小杯", "小杯", "中杯", "大杯", "超大杯"];
-        document.getElementById('final-cup').innerText = cups[finalCupIdx];
-
-        // 基础维度报告
-        const report = [
-            {n: "爆发/回转", v: scores.P, d: "P值越高，爆发力与反应速度越强。"},
-            {n: "部署/能耗", v: scores.C, d: "C值越负，低耗与泛用性越强。"},
-            {n: "社交/范围", v: scores.A, d: "A值越高，社交广度与光环越强。"},
-            {n: "逻辑/机制", v: scores.M, d: "M值越高，硬实力数值越强。"}
-        ];
-
-        document.getElementById('attrs').innerHTML = report.map(r => {
-            let tagClass = "tag-mid";
-            let tagText = "中杯";
-            if(r.v > 8 || r.v < -8) { tagClass = "tag-super"; tagText = "超大杯"; }
-            else if(r.v > 3 || r.v < -3) { tagClass = "tag-big"; tagText = "大杯"; }
-
-            return `
-                <div class="attr-item">
-                    <span class="tag ${tagClass}">${tagText}</span>
-                    <div style="font-weight:bold; font-size:0.85rem; color:#fff">${r.n}</div>
-                    <div style="font-size:0.65rem; color:#777; margin-top:4px;">${r.d}</div>
-                </div>
-            `;
-        }).join('');
+        
+        let desc = "根据审计数据，你的人格特征表现为：";
+        if(hits >= 7) desc += "极其罕见的“强度溢出”型人格。你在处理复杂问题时具备毁灭性的压制力，且能在各种不利环境下寻找最优解，保值率极高。";
+        else if(hits >= 4) desc += "中坚力量型人格。你的各项性能平衡，既有关键时刻的爆发点，也能维持日常生活的长效挂机，是团队中不可或缺的大杯选手。";
+        else desc += "特种潜质人格。你的数值表现可能不够直观，但你擅长在特定领域或极端环境下通过独特机制生存，虽然泛用性有限，但不可替代。";
+        document.getElementById('personality-desc').innerText = desc + " PRTS 建议：保持目前的回转轴，避免过载导致眩晕。";
     }
+
+    document.getElementById('archive-list').innerHTML = auditNodes.map(n => `<div style="margin-bottom:10px;"><b>${n.name}:</b> ${n.pos}标准为核心属性大于阈值，${n.neg}标准为核心属性处于下位水平。</div>`).join('');
 </script>
 </body>
 </html>
