@@ -19,11 +19,11 @@
         #app { width: 100%; max-width: 650px; padding: 20px; box-sizing: border-box; }
         .container { background: var(--panel); padding: 25px; border: 1px solid #333; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
         .progress-container { width: 100%; height: 4px; background: #2a323a; margin: 15px 0; }
-        #progress-bar { height: 100%; width: 0%; background: var(--color-small); transition: width 0.3s; }
-        h1 { font-size: 1.2rem; border-left: 4px solid var(--color-small); padding-left: 15px; margin-bottom: 20px; }
+        #progress-bar { height: 100%; width: 0%; background: var(--color-mid); transition: width 0.3s; }
+        h1 { font-size: 1.2rem; border-left: 4px solid var(--color-mid); padding-left: 15px; margin-bottom: 20px; }
         .q-text { font-size: 1.1rem; margin-bottom: 25px; line-height: 1.6; min-height: 50px; }
         .opt-btn { display: block; width: 100%; padding: 14px 20px; margin-bottom: 10px; background: #252c33; border: 1px solid #3d4650; color: var(--text); text-align: left; cursor: pointer; transition: 0.2s; }
-        .opt-btn:hover { background: #313b45; border-color: var(--color-small); color: #fff; }
+        .opt-btn:hover { background: #313b45; border-color: var(--color-mid); color: #fff; }
         .nav-btns { display: flex; gap: 10px; margin-top: 20px; }
         .back-btn { background: #2a323a; color: #888; border: 1px solid #444; padding: 10px 20px; cursor: pointer; flex: 1; font-size: 0.9rem; }
         .hit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 20px 0; }
@@ -36,11 +36,10 @@
         .tag-xsmall { background: var(--color-xsmall); }
         .cup-title { font-size: 3.5rem; margin: 10px 0; font-weight: 800; text-align: center; }
         .desc-text { font-size: 0.9rem; line-height: 1.8; color: var(--text); background: rgba(0,0,0,0.2); padding: 15px; margin: 20px 0; border-radius: 4px; text-align: left; border-left: 2px solid #444; }
-        /* 深度审计部分 */
         .audit-list { text-align: left; margin-top: 30px; border-top: 1px solid #444; padding-top: 20px; }
         .audit-node { margin-bottom: 25px; }
-        .audit-node h4 { margin: 0 0 8px 0; font-size: 1rem; color: var(--accent); display: flex; align-items: center; justify-content: space-between; }
-        .audit-content { font-size: 0.85rem; line-height: 1.7; color: #9aa4af; }
+        .audit-node h4 { margin: 0 0 8px 0; font-size: 1rem; color: #eee; display: flex; align-items: center; justify-content: space-between; }
+        .audit-content { font-size: 0.85rem; line-height: 1.7; color: #9aa4af; border-bottom: 1px solid #222; padding-bottom: 10px; }
         .disclaimer { font-size: 0.7rem; color: #555; text-align: center; margin-top: 30px; border-top: 1px solid #222; padding-top: 15px; }
         .hidden { display: none; }
     </style>
@@ -49,13 +48,13 @@
 <div id="app">
     <div id="start-screen" class="container">
         <h1>DPSTI 强度人格审计</h1>
-        <p style="color:var(--text); line-height:1.6; font-size:0.9rem;">检测到博士登录。PRTS 将扫描 30 个作战决策逻辑，审计你的爆发、费用、范围、机制四大性能指标。<br><br>注意：结果页将包含十个维度的深度数据扫描。</p>
-        <button class="opt-btn" onclick="resetTest(); showView('quiz-screen'); renderQuestion();" style="text-align:center; border-color:var(--color-small);">[ 开始强度评估 ]</button>
-        <div onclick="showView('archive-screen')" style="color:var(--color-small); text-align:center; margin-top:15px; cursor:pointer; font-size:0.8rem; text-decoration: underline;">查看全性格属性分级标准 >></div>
+        <p style="color:var(--text); line-height:1.6; font-size:0.9rem;">检测到博士登录。PRTS 将扫描 30 个作战决策逻辑，审计你的爆发、费用、范围、机制四大性能指标。<br><br><b>更新说明：</b>本版本已深度补全 10 维 5 档共 50 种性格分析路径。每一份报告都是独一无二的性能评估。</p>
+        <button class="opt-btn" onclick="resetTest(); showView('quiz-screen'); renderQuestion();" style="text-align:center; border-color:var(--color-mid);">[ 开始强度评估 ]</button>
+        <div onclick="showView('archive-screen')" style="color:var(--color-mid); text-align:center; margin-top:15px; cursor:pointer; font-size:0.8rem; text-decoration: underline;">查看全性格属性分级标准 >></div>
     </div>
 
     <div id="quiz-screen" class="hidden">
-        <div style="color:var(--color-small); font-size:0.8rem; font-family:monospace; margin-bottom:5px;" id="q-idx">ANALYSIS // 01</div>
+        <div style="color:var(--color-mid); font-size:0.8rem; font-family:monospace; margin-bottom:5px;" id="q-idx">ANALYSIS // 01</div>
         <div class="progress-container"><div id="progress-bar"></div></div>
         <div class="container">
             <div class="q-text" id="q-text">正在同步作战记录...</div>
@@ -66,13 +65,11 @@
 
     <div id="res-screen" class="hidden container" style="text-align:center;">
         <p style="font-size:0.8rem; opacity:0.6;">审计报告已生成</p>
-        <div id="hit-stat" style="font-weight:bold; font-family:monospace; color:var(--text);">命中 0 / 10 维</div>
-        <div class="cup-title" id="final-cup">大杯</div>
+        <div id="hit-stat" style="font-weight:bold; font-family:monospace; color:var(--text);">命中强势维度: 0 / 10</div>
+        <div class="cup-title" id="final-cup">中杯</div>
         <div id="hit-grid-container" class="hit-grid"></div>
         <div class="desc-text" id="personality-desc"></div>
-
         <div id="audit-report" class="audit-list"></div>
-
         <button class="opt-btn" onclick="location.reload()" style="text-align:center; margin-top:30px;">[ 重新初始化 ]</button>
         <div class="disclaimer">免责声明：此测试基于 MBTI 和 SBTI 逻辑，结果仅供娱乐参考。</div>
     </div>
@@ -85,9 +82,10 @@
 </div>
 
 <script>
+    // 30 题库，涵盖 P/C/A/M 维度
     const questions = [
-        { q: "面对高难关卡的首个精英怪，你的操作是？", o: [{t:"决战技爆发带走",s:{P:2,C:1}},{t:"低费挡枪磨血",s:{P:-1,C:-1}},{t:"特种推拉玩机制",s:{M:-2}},{t:"漏掉保蓝点",s:{M:-1}}]},
-        { q: "项目研发时，你最希望？", o: [{t:"无限资源暴力破解",s:{C:2,M:2}},{t:"极限压人低配通关",s:{C:-2,M:-1}},{t:"全图支援到处都有我",s:{A:2}},{t:"深耕单点技术",s:{A:-2}}]},
+        { q: "高难关卡首个精英怪出现，你的操作是？", o: [{t:"决战技爆发带走",s:{P:2,C:1}},{t:"低费挡枪磨血",s:{P:-1,C:-1}},{t:"特种推拉玩机制",s:{M:-2}},{t:"漏掉保蓝点",s:{M:-1}}]},
+        { q: "项目研发时，你最希望？", o: [{t:"拥有无限预算，打出力大砖飞的效果",s:{C:2,M:2}},{t:"极限压人低配通关",s:{C:-2,M:-1}},{t:"全图支援到处都有我",s:{A:2}},{t:"深耕单点技术",s:{A:-2}}]},
         { q: "朋友求助时，你的态度？", o: [{t:"瞬间起身去解决",s:{P:2}},{t:"陪着直到解决",s:{P:-2}},{t:"需要补偿（费）",s:{C:2}},{t:"流程化指导",s:{M:1}}]},
         { q: "喜欢的技能形态？", o: [{t:"落地点火插拔",s:{P:2,C:-1}},{t:"永续常驻挂机",s:{P:-2,M:1}},{t:"全图超大范围",s:{A:2}},{t:"吟唱后毁灭性输出",s:{P:2,C:2}}]},
         { q: "社交聚餐时你是？", o: [{t:"全场焦点社交达人",s:{A:2}},{t:"只聊身边两个",s:{A:-1}},{t:"低头猛吃拒沟通",s:{A:-2,C:-1}},{t:"点菜统筹负责人",s:{M:2}}]},
@@ -95,7 +93,7 @@
         { q: "面对不公规则？", o: [{t:"暴力拆迁不解释",s:{M:2}},{t:"钻Bug找漏洞",s:{M:-2}},{t:"群体Buff改变环境",s:{A:2}},{t:"积累SP等翻盘",s:{P:-1}}]},
         { q: "学习状态接近？", o: [{t:"考前过载模式",s:{P:2}},{t:"每天一点基石型",s:{P:-2}},{t:"需奖励（奶）才学",s:{C:2}},{t:"自创逻辑体系",s:{M:-2}}]},
         { q: "被降到1级时你？", o: [{t:"完全没用靠练度",s:{C:2}},{t:"优秀工具人",s:{C:-2}},{t:"寻找新赛道",s:{M:-1}},{t:"底子好在哪都行",s:{M:2}}]},
-        { q: "情绪回转周期？", o: [{t:"极快，一顿饭就好",s:{P:1}},{t:"极慢，记仇三年",s:{P:-2}},{t:"随机性极强",s:{M:-1}},{t:"无波动纯机械",s:{M:2}}]},
+        { q: "情绪回转周期？", o: [{t:"很快，一顿饭就好",s:{P:1}},{t:"极慢，记仇三年",s:{P:-2}},{t:"随机性极强",s:{M:-1}},{t:"无波动纯机械",s:{M:2}}]},
         { q: "探索城市的方式？", o: [{t:"暴力跑图走三万步",s:{P:1,M:1}},{t:"精研攻略走捷径",s:{M:-1,C:-1}},{t:"随心所欲乱逛",s:{A:1}},{t:"必须住五星级",s:{C:2}}]},
         { q: "桌面整洁度？", o: [{t:"强迫症级别整齐",s:{M:2}},{t:"乱中有序",s:{M:-1}},{t:"乱成废墟（高费）",s:{C:2}},{t:"无固定位",s:{A:2}}]},
         { q: "对基石稳健看法？", o: [{t:"向往安稳挂机",s:{P:-2}},{t:"追求刺激波峰",s:{P:2}},{t:"基石需点缀爆发",s:{P:1}},{t:"只在乎是否耐打",s:{M:1}}]},
@@ -131,55 +129,152 @@
     function prevQuestion(){ if(current>0){ current--; scores = history.pop(); renderQuestion(); } }
 
     const auditNodes = [
-        { name: "决战输出", check: (s) => s.P > 7, pos: "超大杯", neg: "超小杯", desc: "决战输出指标衡量了你在极端压力下瞬间爆发解决问题的性能。正值代表你在DDL或冲突爆发时，能开启过载模式瞬间清空阻碍；若为负值，则表明你在高压下容易由于回转过慢而陷入‘眩晕’状态。" },
-        { name: "基石防御", check: (s) => s.P < -7, pos: "大杯", neg: "小杯", desc: "基石防御体现了你性格的持久稳定性。高分值意味着你具备极高的容错率，生活节奏如同永续技能般稳健；而负值则暗示你情绪波动较大，缺乏常驻的抗压机制，容易被生活的小怪漏怪。" },
-        { name: "低费模板", check: (s) => s.C < -7, pos: "超大杯", neg: "超小杯", desc: "低费模板是泛用性的核心。高分代表你独立性极强，不需要依赖外部情绪补给或物质支持即可下场作战；负值则意味着你是一个‘高压锅’，需要大量心理建设（费用）和他人照顾才能进入状态。" },
-        { name: "精英部署", check: (s) => s.C > 7, pos: "大杯", neg: "小杯", desc: "精英部署考量了你的人格质感。当你命中此项，代表你属于那种不轻易出手，但只要落位必定改变战局的重器。反之，若命中低分段，则说明你更倾向于作为快速复活的消耗品，缺乏核心站场深度。" },
-        { name: "全图打击", check: (s) => s.A > 7, pos: "超大杯", neg: "超小杯", desc: "全图打击反映了你的社交与影响力半径。正值博士具备跨赛道解决问题的能力，社交光环覆盖广域；负值则表明你的攻击范围极窄，仅能影响身边‘格’内的人，在大规模群体战中容易查无此人。" },
-        { name: "单格阻挡", check: (s) => s.A < -7, pos: "中杯", neg: "小杯", desc: "单格阻挡是对极致专注度的审计。命中高位代表你具备极强的‘挡一打一’能力，擅长在孤独环境中单杀强敌；而命中低位则代表你不仅无法防守大规模冲击，连自己的一路也常因分心而崩线。" },
-        { name: "数值碾压", check: (s) => s.M > 7, pos: "超大杯", neg: "超小杯", desc: "数值碾压代表了你硬实力的‘白值’。如果你在此项评估为正，说明你习惯用逻辑和硬实力正面摧毁困难；若表现为负值，说明你的基础数值下毒严重，面对强力阻碍时缺乏最基本的生存保障。" },
-        { name: "机制逃票", check: (s) => s.M < -7, pos: "大杯", neg: "小杯", desc: "机制逃票体现了你的变通智力。高分博士擅长利用规则漏洞或独特战术寻找捷径，实现低配通关；而低分则暗示你思维僵化，只会硬碰硬，在机制复杂的现代社会中经常陷入苦战。" },
-        { name: "落地即战", check: (s) => s.P > 4 && s.C < 0, pos: "大杯", neg: "超小杯", desc: "落地即战审计了你的反应时延。该指标命中意味着你没有任何启动前摇，即插即用，转换赛道极其丝滑；而命中超小杯则说明你即便资源给够，也会因极其漫长的点火时间而错失良机。" },
-        { name: "独立天赋", check: (s) => s.C < -4 && s.M > 4, pos: "超大杯", neg: "中杯", desc: "独立天赋是关于‘保值率’的审计。高分代表你不吃任何辅助（拐）也能单通生活关卡，是不受环境影响的绝对真神；负值则暗示你极其依赖外部加成，一旦失去他人的奶量支持，你的崩溃速度极快。" }
+        { name: "决战输出", getVal: (s)=>s.P, range:[7, 3, -3, -7], cups:["超大杯","大杯","中杯","小杯","超小杯"], 
+          texts: {
+            "超大杯": "你是泰拉世界顶级的‘银色子弹’。在高压环境下，你的 $DPS$ 指数呈指数级增长。任何突发的危机或 DDL 在你面前都只是‘落地即蒸发’的炮灰。你习惯于开启过载模式，在短时间内倾泻全部性能，你是天生的破局者，保值率极高。",
+            "大杯": "可靠的输出核心。你在处理繁重任务时具备出色的爆发力，能够精准对位核心目标进行歼灭。虽然偶尔需要一定的回转时间来平复情绪，但只要技能点火，你的效率足以令人侧目，是团队中值得信赖的重火力手。",
+            "中杯": "性能平衡的基准输出。你的工作轴极其稳健，不追求极致的爆发，但能保证平均 $DPS$ 处于及格线以上。你更倾向于平滑处理问题，虽然面对高防厚血的极端难题会略显吃力，但在大多数日常作战中，你是泛用性的代名词。",
+            "小杯": "输出能力存在明显‘下毒’倾向。你在面对突发压力时常因回转轴太长而陷入被动。虽然在低压环境下能勉强维持生存，但在真正的硬仗中，你往往无法在关键时点打出应有的数值，容易沦为查无此人的背景板。",
+            "超小杯": "严重的性能崩坏。审计显示你在高压环境下基本无法产出任何有效输出，甚至可能因为‘过载’导致长久的眩晕状态。你的人格白值极低，完全不具备攻坚性能，在泰拉世界的竞争中极易被漏怪，急需回炉重造。"
+          }
+        },
+        { name: "基石防御", getVal: (s)=>s.P*-1, range:[7, 3, -3, -7], cups:["超大杯","大杯","中杯","小杯","超小杯"],
+          texts: {
+            "超大杯": "你是防御力的天花板，真正意义上的‘不动如山’。你具备极高的容错率，情绪轴长到几乎不会产生任何波动。无论是挂机流还是高压阵地战，你都是整道防线的锚点，这种不讲道理的稳定性让你在任何环境中都是 T0 级的选择。",
+            "大杯": "极为稳健的人格模板。你的防御机制极其合理，擅长在长时间的磨血战中保持自我。虽然面对真实伤害（极端打击）会有一定的压力，但出色的自愈与抗压属性让你能够稳稳守住自己的一路，是让伙伴感到安心的基石选手。",
+            "中杯": "常规阻挡位。你的人格性能遵循着普适的平衡规律。你能处理大部分日常琐事，但在面对潮水般涌入的变故时，由于缺乏极端的防御深度，偶尔会出现防御漏洞。你更依赖队友的掩护与资源的合理分配。",
+            "小杯": "防御端存在严重短板。你极其敏感且易受外界干扰，在面对生活的轻微打击时就会产生严重的‘漏怪’倾向。你的生存能力主要建立在环境的‘奶量’支持上，一旦失去辅助，你将迅速在压力中彻底崩线。",
+            "超小杯": "纸糊的人格防线。审计显示你的阻挡数为 0，任何微小的变故都能直接冲破你的心理防御。你不仅无法保护他人，甚至连自保都成问题。这种极端的脆皮性能让你在现实世界的复杂环境下极易被直接淘汰。"
+          }
+        },
+        { name: "低费模板", getVal: (s)=>s.C*-1, range:[7, 3, -3, -7], cups:["超大杯","大杯","中杯","小杯","超小杯"],
+          texts: {
+            "超大杯": "你是极其罕见的‘零费战神’。你的人格完全不需要任何外界资源、情绪关怀或物质供养即可下场开启战斗模式。极高的泛用性让你在任何社交或工作场景中都能实现‘即插即用’，你是所有领导和团队梦寐以求的顶级工具人。",
+            "大杯": "低耗能高产出的典范。你在启动前不需要繁琐的心理建设或资源倾斜，能以极简的成本跑出极高的性能。虽然偶尔会有一定的‘先锋回费’逻辑，但总体上你是一个自洽性极强的人，不给人添麻烦是你的核心竞争力。",
+            "中杯": "标准的部署费用。你对资源的需求处于合理区间，既不矫情也不廉价。你需要在环境中获得基本的认可与支持才能发挥性能。你的人生哲学是‘有多少费干多少活’，这种对等交换的逻辑让你具备了中规中矩的稳定性。",
+            "小杯": "性格费用昂贵。你是一个‘吃资源’大户，在开始任何有价值的行动前，都需要大量的铺垫、夸奖或资源支持。这种高昂的成本导致你的泛用性急剧下降，除非你的数值极高，否则在大多数性价比审计中，你都会被优先放弃。",
+            "超小杯": "极端的下毒费用。审计显示你的人生处于‘费用永不自然回复’的窘境。开启你的代价之大，往往超过了你所能产出的价值总和。你不仅吃干了所有的环境资源，还经常因为‘卡手’导致整个团队的运作节奏彻底陷入瘫痪。"
+          }
+        },
+        { name: "精英部署", getVal: (s)=>s.C, range:[7, 3, -3, -7], cups:["超大杯","大杯","中杯","小杯","超小杯"],
+          texts: {
+            "超大杯": "你是绝对的‘重器’。虽然部署费用惊人，但你一旦下场，便意味着关卡的终结。你对自己的人格有着极致的尊严与要求，不屑于处理日常琐事，只在决定命运的瞬息间显露锋芒。你是那种一人成军、不可替代的精英人格。",
+            "大杯": "极具质感的高配选手。你对自我成长的投资极大，这种积累让你在面对重大挑战时展现出降维打击的姿态。你追求的是品质而非泛用性，虽然启动速度较慢，但那份厚重的使命感让你在复杂环境下具备极强的站场尊严。",
+            "中杯": "主流的精英意识。你明白自身价值需要通过一定的代价来体现。你在重要场合表现得体，在日常环境中也懂得收敛锋芒。你追求一种得体的仪式感与专业度，这种人格高度让你在社会评价中稳坐中坚位置。",
+            "小杯": "廉价感倾向。你似乎缺乏对自己核心价值的审计，总是频繁地将自己投入到无意义的低价值消耗中。你的人格质感稀薄，虽然看起来忙碌且活跃，但在关键的‘精英层级’评估中，你总是因缺乏深度而被忽视。",
+            "超小杯": "彻底的廉价人格。你对自己的消耗几乎是毁灭性的，完全没有建立任何精英防护机制。你的人格像极了那些部署即撤回的廉价炮灰，不仅在现实博弈中毫无站场权，甚至连最基本的尊重都很难换取。"
+          }
+        },
+        { name: "全图打击", getVal: (s)=>s.A, range:[7, 3, -3, -7], cups:["超大杯","大杯","中杯","小杯","超小杯"],
+          texts: {
+            "超大杯": "你是天生的‘全图真银斩’。你的视野与社交半径不仅覆盖了泰拉大地，甚至跨越了多个位面。你具备极强的信息搜集与跨界协作能力，能在千里之外精准捕捉并解决问题。这种恐怖的影响力范围让你在任何博弈中都立于不败之地。",
+            "大杯": "超广域光环拥有者。你在社交和工作环境中具备强大的‘共鸣’属性，能够轻易影响到较大范围内的同伴。你不仅能守好自己的一路，还能为周围提供强力的支援，是团队协作中的核心枢纽，泛用性极强。",
+            "中杯": "标准攻击范围。你专注于眼前的职守，对外界的感知与干预保持在合理的阈值内。你奉行‘守好一亩三分地’的原则，虽然不具备全图支援的壮举，但这种适度的专注让你在常规任务中表现得极其稳健、不乱轴。",
+            "小杯": "严重的‘短手’困境。你的人格影响力仅局限于极窄的个人圈子内。你对外界环境的变化反应迟钝，缺乏跨部门或跨场景的适应能力。在需要大局观的战场上，你的人格往往因为手短而无法触及核心问题。",
+            "超小杯": "自闭症级单格视野。审计显示你的视野被完全遮蔽，你对世界的认知仅存在于你所站立的那一个格子里。你完全丧失了与外界交流、协作的能力，这种极端的孤岛性格让你在现代协作社会中几乎无法产出任何有效价值。"
+          }
+        },
+        { name: "单格阻挡", getVal: (s)=>s.A*-1, range:[7, 3, -3, -7], cups:["超大杯","大杯","中杯","小杯","超小杯"],
+          texts: {
+            "超大杯": "你是极致的‘决斗型’人格。在‘挡一打一’的极端环境下，你展现出了非凡的专注与统治力。你擅长在高压下与强敌进行 1v1 的对决并将其斩于马下。你这种‘绝食型’的强大不需要任何掩护，你是孤独而高傲的孤胆英雄。",
+            "大杯": "精准的局部压制力。你在处理特定任务时具备极高的专注度，不会被外界的繁琐信号所干扰。虽然面对群攻（多线程任务）会有些吃力，但在针对核心难点的点对点突破上，你的专业程度在大杯序列中也是出类拔萃的。",
+            "中杯": "稳定的单向防线。你深知个人能力的边界，习惯于在既定轨道上解决问题。你具备不错的抗干扰能力，能稳健地阻挡并处理面前的麻烦。这种人格在稳定的系统结构中是最好的螺丝钉，虽不出彩但绝不失职。",
+            "小杯": "极易分心的专注力。你无法在单一任务上维持长效的精力投入，常因为外界的干扰而导致‘防线漏怪’。你的性格缺乏基本的阻挡强度，面对稍有难度的单体挑战就会产生严重的退缩心理，稳定性堪忧。",
+            "超小杯": "彻底的阻挡真空。审计显示你完全不具备任何‘阻挡’属性，任何生活的挫折或任务都会直接穿过你的身体而不会受到任何减速。你对生活完全处于不防守状态，这种人格在大规模作战中仅能作为拖累队友的负担存在。"
+          }
+        },
+        { name: "数值碾压", getVal: (s)=>s.M, range:[7, 3, -3, -7], cups:["超大杯","大杯","中杯","小杯","超小杯"],
+          texts: {
+            "超大杯": "你是纯粹的‘力大砖飞’代言人。在你绝对的‘数值’面前，一切复杂的机制都显得苍白无力。你习惯用硬实力硬顶一切困难，这种人格白值上的降维打击让你无需思考任何策略，直接正面推平关卡。你是绝对强度的化身。",
+            "大杯": "扎实的硬核人格。你的基本功极其深厚，各项能力数值均处于上位水平。你不需要花哨的招式，仅凭卓越的执行力与过硬的心理素质就能解决绝大多数麻烦。在同级评价中，你的数值就是最令人放心的保证。",
+            "中杯": "平衡的数值体系。你的人格性能非常符合泰拉世界的正态分布。你拥有合理的优势与短板，在正常的社会运作中能提供可靠的产出。虽然不具备碾压一切的暴力，但你的存在是系统稳固运行的最佳土壤。",
+            "小杯": "属性下毒严重。审计显示你的基础能力（白值）明显低于平均线，导致你在面对稍有强度的阻碍时就会显得力不从心。你经常需要依赖各种外部 BUFF 才能勉强达到正常人的及格线，生存压力巨大。",
+            "超小杯": "绝望的数值空洞。你的人格在底层逻辑上就缺乏基本的竞争力。无论你如何努力，脆弱的数值底座都无法承载沉重的任务。这种人格在大数据审计中通常被直接归类为‘下水道’级，完全不具备上场作战的可能。"
+          }
+        },
+        { name: "机制逃票", getVal: (s)=>s.M*-1, range:[7, 3, -3, -7], cups:["超大杯","大杯","中杯","小杯","超小杯"],
+          texts: {
+            "超大杯": "你是泰拉世界最顶尖的‘逃票大师’。你的人格充满了不可思议的奇技淫巧，擅长利用规则的边缘与漏洞实现四两拨千斤。在别人还在苦苦推演数值时，你已经用最‘骚’的操作直接拿下了三星评价。你的人格本身就是一种机制奇迹。",
+            "大杯": "极具灵性的战术家。你的大脑中装满了应对各种特殊环境的‘黑科技’。你擅长寻找捷径，总能避开吃力不讨好的正面硬刚，通过精妙的排布化解危机。这种战术深度让你在应对非传统挑战时具备极高的统治力。",
+            "中杯": "守规矩的实用主义。你尊重环境的既定法则，在框架内寻找最优解。你偶尔会有一些灵光一闪的时刻，但更多时候你倾向于稳健地按照既定流程办事。这种人格虽缺乏惊喜，但胜在可预测、好配合。",
+            "小杯": "思维僵化。你极其迷信硬碰硬的逻辑，完全看不到规则背后的变通路径。你在面对复杂的非线性问题时经常陷入苦战，这种低效的破局方式让你消耗了大量无意义的精力和成本，是典型的战术贫乏者。",
+            "超小杯": "彻底的死脑筋。审计显示你完全丧失了对‘机制’的理解力，像一个只会按固定程序撞墙的低级 AI。面对生活的任何变化，你只会重复那些毫无效果的旧动作，这种极端的顽固让你在多变的泰拉环境中注定会被首波淘汰。"
+          }
+        },
+        { name: "落地即战", getVal: (s)=>s.P-s.C, range:[10, 5, -5, -10], cups:["超大杯","大杯","中杯","小杯","超小杯"],
+          texts: {
+            "超大杯": "你是罗德岛最恐怖的‘空降兵’。不仅部署费用低廉，且落地瞬间即可进入全负荷作战状态。你在处理突发紧急状况时的反应时延几乎为 0，这种极速启动的性能让你在任何瞬息万变的竞争中都能抢占先机，你是绝对的速度之王。",
+            "大杯": "反应敏捷的快热型人格。你具备极佳的自适应能力，进入新环境后能迅速找准自身定位并产出价值。虽然会有短暂的‘观察期’，但极高的执行效率让你能在最短时间内完成暖机，是快节奏社会中的顶级幸存者。",
+            "中杯": "常规的启动流程。你的人格性能释放遵循着标准的暖机曲线。你需要一定的时间来预热情绪、熟悉环境，这种合理的过渡虽然会慢一步，但能保证后续输出的持久与稳定。你是一个慢热但可靠的中坚力量。",
+            "小杯": "严重的‘点火困难’症。你的人格启动前摇极长，进入状态的速度远低于外界变动的节奏。当你终于准备好开始工作时，往往战机早已流失。这种极度拖沓的启动逻辑极大地稀释了你本就不多的性能，评价极低。",
+            "超小杯": "永恒的暖机地狱。审计显示你从下场到离场，一直处于‘加载中’的状态。你的人格从未真正进入过作战轴位，所有的潜能都在无意义的犹豫与前摇中被白白浪费。这种性格在效率至上的世界里，完全不具备任何实战权。"
+          }
+        },
+        { name: "独立天赋", getVal: (s)=>s.M-s.C, range:[10, 5, -5, -10], cups:["超大杯","大杯","中杯","小杯","超小杯"],
+          texts: {
+            "超大杯": "你是泰拉世界的‘真·绝食流’。你的人格自带完整的自愈、回能与护甲机制，完全不需要任何外界环境的加持或他人的情感支持。这种极端的独立性让你具备了无可比拟的‘保值率’，无论版本如何更迭，你永远是战场上的唯一主宰。",
+            "大杯": "高自尊的自驱型人格。你的人格底座非常稳健，习惯于自我激励与自我迭代。虽然在极端环境下偶尔也需要一定的资源对齐，但总体上你是一个能独立负责一个扇区的强者。这种减少对他人的依赖，本身就是一种极大的强度。",
+            "中杯": "良好的协作型人格。你的人格在环境中表现出良好的相容性。你既具备一定的独立思考能力，也懂得在关键时刻利用他人的支持（拐）来放大自己的产出。这种适度的依赖感让你在团队结构中显得非常和谐、顺手。",
+            "小杯": "性格底层的‘吃拐’依赖。你是一个典型的‘保排选手’，离开了他人的认可、物质的供养或环境的悉心呵护，你的数值将瞬间腰斩。这种极高的外部依赖度让你的强度显得虚浮，一旦失去温室环境，你将毫无生还可能。",
+            "超小杯": "极端的巨婴型人格。审计显示你完全丧失了独立生存的能力，你的人生完全建立在对他人的吸血与资源的浪费上。你没有任何自驱逻辑，离开了保姆式的全方位呵护，你连最基础的生存轴都无法跑通，是典型的‘下毒’人格极致。"
+          }
+        }
     ];
 
+    let current = 0, history = [], scores = {P:0, C:0, A:0, M:0};
+
+    function showView(v){ document.querySelectorAll('.hidden, #start-screen, #quiz-screen, #res-screen, #archive-screen').forEach(e=>e.classList.add('hidden')); document.getElementById(v).classList.remove('hidden'); }
+    function resetTest(){ current = 0; history = []; scores = {P:0, C:0, A:0, M:0}; }
+    function renderQuestion(){
+        let q = questions[current]; document.getElementById('q-idx').innerText = "ANALYSIS // "+(current+1); document.getElementById('progress-bar').style.width = (current/30*100)+"%"; document.getElementById('q-text').innerText = q.q;
+        const optBox = document.getElementById('opts'); optBox.innerHTML = '';
+        q.o.forEach(o => { let b = document.createElement('button'); b.className = 'opt-btn'; b.innerText = o.t; b.onclick = () => { history.push(JSON.parse(JSON.stringify(scores))); for(let k in o.s) scores[k]+=o.s[k]; current++; if(current<30) renderQuestion(); else showResult(); }; optBox.appendChild(b); });
+        document.getElementById('prev-btn').style.visibility = current > 0 ? 'visible' : 'hidden';
+    }
+    function prevQuestion(){ if(current>0){ current--; scores = history.pop(); renderQuestion(); } }
+
+    function getCup(val, range, cups){
+        for(let i=0; i<range.length; i++) if(val >= range[i]) return cups[i];
+        return cups[cups.length-1];
+    }
+
     function showResult(){
-        showView('res-screen'); let hits = auditNodes.filter(n => n.check(scores)).length;
-        document.getElementById('hit-stat').innerText = `命中 ${hits} / 10 维`;
+        showView('res-screen');
+        let hitPower = 0;
+        const reportData = auditNodes.map(n => {
+            const val = n.getVal(scores);
+            const cup = getCup(val, n.range, n.cups);
+            if(cup === "超大杯" || cup === "大杯") hitPower++;
+            return { name: n.name, cup: cup, desc: n.texts[cup] };
+        });
+
+        document.getElementById('hit-stat').innerText = `命中强势维度: ${hitPower} / 10`;
         const cupNames = ["超小杯", "小杯", "中杯", "大杯", "超大杯"];
-        const finalIdx = Math.min(Math.floor(hits/2), 4);
+        const finalIdx = Math.min(Math.floor(hitPower/2) + 1, 4);
         const finalCup = cupNames[finalIdx];
         const finalEl = document.getElementById('final-cup');
         finalEl.innerText = finalCup;
         const colorMap = {"超大杯":"var(--color-super-big)","大杯":"var(--color-big)","中杯":"var(--color-mid)","小杯":"var(--color-small)","超小杯":"var(--color-xsmall)"};
         finalEl.style.color = colorMap[finalCup];
 
-        document.getElementById('hit-grid-container').innerHTML = auditNodes.map(n => {
-            const ok = n.check(scores); const cup = ok ? n.pos : n.neg;
-            let tagClass = cup==='超大杯'?'tag-super-big':cup==='大杯'?'tag-big':cup==='中杯'?'tag-mid':cup==='小杯'?'tag-small':'tag-xsmall';
-            return `<div class="hit-item"><span>${n.name}</span><span class="tag ${tagClass}">${cup}</span></div>`;
-        }).join('');
-        
-        // 生成详细深度审计
-        document.getElementById('audit-report').innerHTML = auditNodes.map(n => {
-            const ok = n.check(scores); const cup = ok ? n.pos : n.neg;
-            let tagClass = cup==='超大杯'?'tag-super-big':cup==='大杯'?'tag-big':cup==='中杯'?'tag-mid':cup==='小杯'?'tag-small':'tag-xsmall';
-            return `
-                <div class="audit-node">
-                    <h4>${n.name} <span class="tag ${tagClass}">${cup}</span></h4>
-                    <div class="audit-content">${n.desc}</div>
-                </div>
-            `;
+        document.getElementById('hit-grid-container').innerHTML = reportData.map(d => {
+            const tagClass = d.cup==='超大杯'?'tag-super-big':d.cup==='大杯'?'tag-big':d.cup==='中杯'?'tag-mid':d.cup==='小杯'?'tag-small':'tag-xsmall';
+            return `<div class="hit-item"><span>${d.name}</span><span class="tag ${tagClass}">${d.cup}</span></div>`;
         }).join('');
 
-        let desc = "综合评价：";
-        if(hits >= 7) desc += "你的人格具备极高的‘泛用性’。在高压环境下依然能保持输出轴不乱，且由于具备独立天赋，你在泰拉任何复杂的生存环境中都能作为‘超大杯’核心存在。";
-        else if(hits >= 4) desc += "你属于中规中矩的中坚干员。虽然没有极端的统治力，但胜在部署费用适中，回转健康，是处理日常生活关卡的最佳选择。";
-        else desc += "特种作战潜质。虽然基础白值较低，但在某些特定的‘下毒’环境下，你那独特的性格机制可能是唯一的解法。建议精研特定领域。";
-        document.getElementById('personality-desc').innerText = desc;
+        document.getElementById('audit-report').innerHTML = reportData.map(d => {
+            const tagClass = d.cup==='超大杯'?'tag-super-big':d.cup==='大杯'?'tag-big':d.cup==='中杯'?'tag-mid':d.cup==='小杯'?'tag-small':'tag-xsmall';
+            return `<div class="audit-node"><h4>${d.name} <span class="tag ${tagClass}">${d.cup}</span></h4><div class="audit-content">${d.desc}</div></div>`;
+        }).join('');
+
+        let sumDesc = "综合审计报告汇总：";
+        if(hitPower >= 7) sumDesc += "博士，你目前展现出的数据具备恐怖的‘数值压制力’。在多变且残酷的泰拉竞争环境中，你的人格轴位极其稳固，且能在高压下保持超一线输出。这种全方位的性能特化让你在任何决策链条中都拥有绝对的话语权。";
+        else if(hitPower >= 3) sumDesc += "你的性能表现符合中坚干员的普适规律。你拥有合理的资源能耗与输出曲线，在社会结构的各个齿轮中都能良好运转。你的价值在于‘高容错率’，即使在不完美的条件下，你依然能跑通整个人生关卡。";
+        else sumDesc += "审计显示你属于‘特殊对策’型人格。常规环境的数值博弈并不适合你，你的价值往往隐藏在极少数的、需要极高智力逃票或独特偏科才能解决的难关中。建议避开正面硬刚，寻找属于你的特种赛道。";
+        document.getElementById('personality-desc').innerText = sumDesc;
     }
 
-    document.getElementById('archive-list').innerHTML = auditNodes.map(n => `<div style="margin-bottom:15px; border-bottom:1px solid #222;"><b>${n.name}:</b><br>基于[P/C/A/M]四维评分。正向特化通常判定为<span style="color:var(--color-super-big)">超大杯</span>，反向或平庸表现判定为<span style="color:var(--color-xsmall)">超小杯</span>。</div>`).join('');
+    document.getElementById('archive-list').innerHTML = auditNodes.map(n => `<div style="margin-bottom:15px; border-bottom:1px solid #444; padding-bottom:5px;"><b>${n.name}:</b><br>基于性格坐标综合判定。正向特化通常判定为<span style="color:var(--color-super-big)">超大杯</span>，处于中间地带为<span style="color:var(--color-mid)">中杯</span>，性能严重受限则判定为低杯级。</div>`).join('');
 </script>
 </body>
 </html>
